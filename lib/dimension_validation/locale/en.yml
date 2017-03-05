@@ -1,0 +1,14 @@
+en:
+  errors:
+    messages:
+      dimension:
+        width: 'width'
+        height: 'height'
+        aspect_ratio: 'aspect ratio'
+        without_width_or_height: 'without width or height'
+        not_a_number: '%{dimension} not a number'
+        greater_than: '%{dimension} must be greater than %{count}'
+        greater_than_or_equal_to: '%{dimension} must be greater than or equal to %{count}'
+        equal_to: '%{dimension} must be equal to %{count}'
+        less_than: '%{dimension} must be less than %{count}'
+        less_than_or_equal_to: '%{dimension} must be less than or equal to %{count}'

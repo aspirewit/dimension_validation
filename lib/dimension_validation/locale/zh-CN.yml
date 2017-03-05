@@ -1,0 +1,14 @@
+zh-CN:
+  errors:
+    messages:
+      dimension:
+        width: '宽度'
+        height: '高度'
+        aspect_ratio: '宽高比'
+        without_width_or_height: '没有宽度或高度'
+        not_a_number: '%{dimension}的值不是数字'
+        greater_than: '%{dimension}的值必须大于%{count}'
+        greater_than_or_equal_to: '%{dimension}的值必须大于或等于%{count}'
+        equal_to: '%{dimension}的值必须等于%{count}'
+        less_than: '%{dimension}的值必须小于%{count}'
+        less_than_or_equal_to: '%{dimension}的值必须小于或等于%{count}'
