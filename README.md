@@ -50,7 +50,13 @@ options: greater_than, greater_than_or_equal_to, equal_to, less_than, less_than_
 
 ### Example
 ```
+# Literal value
 validates :avatar, dimension: { width: { equal_to: 240 }, height: { equal_to: 240 } }
+# Proc and lambda
+validates :avatar, dimension: { aspect_ratio: { equal_to: lambda { |record| 1 } } }
+# Method name
+validates :avatar, dimension: { aspect_ratio: { equal_to: :default_aspect_ratio } }
+
 validates_dimension_of :avatar, width: { equal_to: 240 }, height: { equal_to: 240 }
 ```
 
