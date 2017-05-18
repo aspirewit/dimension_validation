@@ -21,8 +21,6 @@ module ActiveModel
       end
 
       def validate_each(record, attr_name, value)
-        return unless record.send("#{attr_name}_changed?")
-
         unless with_width_and_height?(value)
           record.errors.add(attr_name, 'dimension.without_width_or_height'.to_sym, filtered_options(value))
           return
