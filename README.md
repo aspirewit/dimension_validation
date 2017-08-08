@@ -26,9 +26,19 @@ If you are using `CarrierWave`, can define a base uploader, as follows.
 ```
 class BaseUploader < CarrierWave::Uploader::Base
   attr_reader :width, :height
-  before :cache, :capture_size
 
-  def capture_size(file)
+  before :cache, :before_cache
+  after :retrieve_from_store, :after_retrieve_from_store
+
+  def before_cache(file)
+    capture_dimensions(file)
+  end
+
+  def after_retrieve_from_store(file)
+    capture_dimensions(@file)
+  end
+
+  def capture_dimensions(file)
     if version_name.blank?
       if file.path.nil?
         img = ::MiniMagick::Image::read(file.file)
