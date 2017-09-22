@@ -30,6 +30,8 @@ class BaseUploader < CarrierWave::Uploader::Base
   before :cache, :before_cache
   after :retrieve_from_store, :after_retrieve_from_store
 
+  private
+
   def before_cache(file)
     capture_dimensions(file)
   end
@@ -41,7 +43,13 @@ class BaseUploader < CarrierWave::Uploader::Base
   def capture_dimensions(file)
     if version_name.blank?
       if file.path.nil?
-        img = ::MiniMagick::Image::read(file.file)
+        file_or_path = file.file
+        img = if file_or_path.is_a?(String)
+                ::MiniMagick::Image.open(file_or_path)
+              else
+                ::MiniMagick::Image.read(file_or_path.file)
+              end
+
         @width = img[:width]
         @height = img[:height]
       else
